@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- padding="16dp" adiciona um espaçamento interno em toda a borda da tela -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -11,63 +11,87 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tvPeso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Peso:" />
+        android:padding="16dp"
+        android:text="Peso:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etPeso"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         android:hint="em quilos"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPeso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvPeso"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tvAltura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Altura:" />
+        android:padding="16dp"
+        android:text="Altura:"
+        app:layout_constraintStart_toStartOf="@+id/tvPeso"
+        app:layout_constraintTop_toBottomOf="@+id/tvPeso" />
 
     <EditText
         android:id="@+id/etAltura"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         android:hint="em metros"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAltura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etPeso"
+        app:layout_constraintTop_toTopOf="@id/tvAltura" />
 
     <TextView
+        android:id="@+id/tvImc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="IMC:" />
+        android:text="IMC:"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="@id/tvAltura"
+        app:layout_constraintTop_toBottomOf="@id/tvAltura"
+        />
 
     <TextView
         android:id="@+id/tvResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0.0"
-        android:textAppearance="@android:style/TextAppearance.Large" />
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@+id/etPeso"
+        app:layout_constraintTop_toTopOf="@id/tvImc"
+        app:layout_constraintBottom_toBottomOf="@id/tvImc"
+        />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btCalcular"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:text="Calcular"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@id/tvResultado"
+        app:layout_constraintTop_toBottomOf="@id/tvResultado"
+        />
 
-        <Button
-            android:id="@+id/btCalcular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Calcular" />
+    <Button
+        android:id="@+id/btLimpar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limpar"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@id/btCalcular"
+        app:layout_constraintTop_toTopOf="@id/btCalcular"
+        />
 
-        <Button
-            android:id="@+id/btLimpar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Limpar" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
