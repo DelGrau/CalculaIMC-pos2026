@@ -14,7 +14,7 @@ import kotlin.math.pow
 class MainActivity : AppCompatActivity() {
 
     /**
-     * **IMPORTANTE**:
+     * **[!IMPORTANT]**:
      * Normalmente, o correto é criar as instância assim que são declaradas já que o Kotlin é null safe.
      * A única forma de delcarar um item null é assim, deliberadamente usando `lateinit`
      */
@@ -70,12 +70,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         btCalcular.setOnLongClickListener {
-            Toast.makeText(this, "Botão para calcular o IMC", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_longclick_bt_calcular), Toast.LENGTH_SHORT).show()
             true
         }
 
         btLimpar.setOnLongClickListener {
-            Toast.makeText(this, "Botão para limpar os campos de texto", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_longclick_bt_limpar), Toast.LENGTH_SHORT).show()
             true
         }
     }
@@ -83,22 +83,22 @@ class MainActivity : AppCompatActivity() {
     private fun btLimparOnCLick() {
         etPeso.text.clear()
         etAltura.text.clear()
-        tvResultado.text = "0.0"
+        tvResultado.text = getString(R.string.zeros)
         etPeso.requestFocus()
     }
 
     private fun btCalcularOnClick() {
         /**
-         * aqui usamos o elvis operator (?:) para fazer um fallback em caso de erro
+         * aqui usamos o elvis operator (`?:`) para fazer um fallback em caso de erro
          * ou seja: se o valor for null, ele já executa esse código, se não, segue normal
          */
         val peso = etPeso.text.toString().toDoubleOrNull()?: run {
-            etPeso.error = "Campo peso deve ser informado"
+            etPeso.error = getString(R.string.erro_peso)
             etPeso.requestFocus()
             return
         }
         val altura = etAltura.text.toString().toDoubleOrNull()?: run {
-            etAltura.error = "Campo altura deve ser informado"
+            etAltura.error = getString(R.string.erro_altura)
             etAltura.requestFocus()
             return
         }
